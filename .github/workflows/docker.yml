@@ -15,9 +15,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: cd fast_api
-      run: cd fast_api
+      run: cd ./fast_api
     - name: Build docker fast_api
-      run: docker build -t prpa1984/fast_api_vae:latest .
+      run: docker build . --tag=prpa1984/fast_api_vae:latest
     - uses: docker/login-action@v1 
       with:
         username: ${{ secrets.DOCKER_LOGIN_USERNAME }}
@@ -27,6 +27,6 @@ jobs:
     - name: cd streamlit
       run: cd ../streamlit
     - name: Build docker streamlit
-      run: docker build -t prpa1984/streamlit:latest .
+      run: docker build . --tag=prpa1984/streamlit:latest
     - name: Push the Docker image
       run: docker push prpa1984/streamlit:latest
