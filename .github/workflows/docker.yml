@@ -12,26 +12,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Change d
+    - uses: actions/checkout@v3
+    - name: Build docker fast_api
       run: |
         cd fast_api
-    - name: aux
-      run: pwd
-    - name: Build docker fast_api
-      run: docker build . --tag=prpa1984/fast_api_vae:latest
+        docker build . --tag=prpa1984/fast_api_vae:latest
     - uses: docker/login-action@v1 
       with:
         username: ${{ secrets.DOCKER_LOGIN_USERNAME }}
         password: ${{ secrets.DOCKER_LOGIN_PASSWORD }}
     - name: Push the Docker image
       run: docker push prpa1984/fast_api_vae:latest
-    - name: Change streamlit
-      run: |
-        cd ..
-        cd streamlit
     - name: Build docker streamlit
-      run: docker build . --tag=prpa1984/streamlit:latest
+      run: |
+        cd streamlit
+        docker build . --tag=prpa1984/streamlit:latest
     - name: Push the Docker image
       run: docker push prpa1984/streamlit:latest
