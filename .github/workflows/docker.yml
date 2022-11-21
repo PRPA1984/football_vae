@@ -17,7 +17,7 @@ jobs:
     - name: cd fast_api
       run: cd ./fast_api
     - name: aux
-      run: echo "${{ GITHUB_WORKSPACE }}"
+      run: echo "${{ env.GITHUB_WORKSPACE }}"
     - name: Build docker fast_api
       run: docker build . --tag=prpa1984/fast_api_vae:latest
     - uses: docker/login-action@v1 
