@@ -1,6 +1,6 @@
 FROM python:3.6
 
-COPY . /src
+COPY . ./src
 
 WORKDIR src
 
