@@ -1,8 +1,8 @@
 FROM python:3.6
 
-COPY . .
+COPY . /src
 
-WORKDIR .
+WORKDIR src
 
 EXPOSE 8000:8000
 
